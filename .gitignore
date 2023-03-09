@@ -4,6 +4,7 @@
 /.nox/
 /.python-version
 /.pytype/
+/.pytest_cache/
 /dist/
 /docs/_build/
 /src/*.egg-info/
