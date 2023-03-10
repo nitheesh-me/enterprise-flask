@@ -113,13 +113,7 @@ fragments = [
 ]
 
 [tool.hatch.version]
-source = "vcs"
-
-[tool.hatch.build.hooks.vcs]
-version-file = "src/_version.py"
-template = '''
-version = "{version}"
-'''
+path = "src/enterprise_flask/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/profiling"]

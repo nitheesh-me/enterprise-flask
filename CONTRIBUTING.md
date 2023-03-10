@@ -39,27 +39,17 @@ Request features on the [Issue Tracker].
 
 You need Python 3.7+ and the following tools:
 
-- [Poetry]
+- [Hatch]
 - [Nox]
-- [nox-poetry]
 
 Install the package with development requirements:
 
 ```console
-$ poetry install
+$ pip install -e .
 ```
 
-You can now run an interactive Python session,
-or the command-line interface:
-
-```console
-$ poetry run python
-$ poetry run enterprise-flask
-```
-
-[poetry]: https://python-poetry.org/
+[hatch]: https://hatch.pypa.io/
 [nox]: https://nox.thea.codes/
-[nox-poetry]: https://nox-poetry.readthedocs.io/
 
 ## How to test the project
 
