@@ -53,7 +53,8 @@ jobs:
       - name: Check if package is private
         id: is-private
         run: |
-          echo "::set-output name=check::$(hatch project metadata classifiers | jq 'contains([\"Private :: Do Not Upload\"])')"
+          IS_PRIVATE=$(hatch project metadata classifiers | jq 'contains(["Private :: Do Not Upload"])')
+          echo "::set-output name=check::$IS_PRIVATE"
 
       - name: Publish package on PyPI
         if: steps.check-version.outputs.tag && steps.is-private.outputs.check != 'true'
