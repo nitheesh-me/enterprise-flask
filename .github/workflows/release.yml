@@ -49,15 +49,21 @@ jobs:
 
       - name: Build package
         run: hatch build
-      - name: Publish package on PyPI
-        if: steps.check-version.outputs.tag
+
+      - name: Check if package is private
+        id: is-private
+        run: |
+          echo "::set-output name=private::$(hatch project metadata classifiers | jq 'contains([\"Private :: Do Not Upload\"])')"
+
+      - name: Publish package on PyPI (is private != true)
+        if: steps.check-version.outputs.tag && steps.is-private.outputs.private != 'true'
         uses: pypa/gh-action-pypi-publish@v1.5.0
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
 
       - name: Publish package on TestPyPI
-        if: "! steps.check-version.outputs.tag"
+        if: "! steps.check-version.outputs.tag && steps.is-private.outputs.private != 'true'"
         uses: pypa/gh-action-pypi-publish@v1.5.0
         with:
           user: __token__

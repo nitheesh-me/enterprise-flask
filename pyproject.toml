@@ -15,7 +15,6 @@ classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
-  "Private :: Do Not Upload",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.7",
@@ -25,6 +24,9 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Topic :: Software Development",
   "Typing :: Typed",
+  # Include this classifier to prevent accidently publishing private code to PyPI.
+  # https://pypi.org/classifiers/
+  "Private :: Do Not Upload",
 ]
 dependencies = [
     "click>=8.0.1",
